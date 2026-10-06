@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>http://www.mileenaentanga.com/</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Capa negra 100% opaca al frente */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #overlay h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ff0055;
+        }
+
+        #overlay p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        /* La imagen arranca oculta completamente */
+        .img-container {
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla interactiva previa (Negro total) -->
+    <div id="overlay" onclick="iniciarBroma()">
+        <h1>www.mileenaentanga.com</h1>
+        <p>Hacé click o tocá la pantalla para cargar el contenido...</p>
+    </div>
+
+    <!-- Imagen principal -->
+    <div id="contenido" class="img-container">
+        <img src="petechango.jfif" alt="Mileena en tanga">
+    </div>
+
+    <!-- Audio -->
+    <audio id="audio" src="cancion.mp3" loop></audio>
+
+    <script>
+        function iniciarBroma() {
+            var audio = document.getElementById('audio');
+            var overlay = document.getElementById('overlay');
+            var contenido = document.getElementById('contenido');
+            
+            // Oculta la pantalla negra y muestra la imagen
+            overlay.style.display = 'none';
+            contenido.style.display = 'flex';
+            
+            // Arranca la música
+            audio.play().catch(function(error) {
+                console.log("Error al reproducir audio:", error);
+            });
+        }
+    </script>
+</body>
+</html>
